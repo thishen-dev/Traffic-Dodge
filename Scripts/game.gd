@@ -29,9 +29,9 @@ func update_score_display() -> void:
 
 
 func update_difficulty_display() -> void:
-	if score >= 1000:
+	if score >= 500:
 		difficulty_board.texture = level3_image
-	elif score >= 500:
+	elif score >= 250:
 		difficulty_board.texture = level2_image
 	else:
 		difficulty_board.texture = level1_image	

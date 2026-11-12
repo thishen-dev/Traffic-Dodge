@@ -13,7 +13,7 @@ config_version=5
 config/name="Traffic Dodge "
 run/main_scene="uid://di75g70ayah4o"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="uid://cdrgun4q4bllp"
+config/icon="uid://dwxuoadyyqpdg"
 
 [display]
 

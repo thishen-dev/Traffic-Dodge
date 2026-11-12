@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c2slq1bqfbmc2"]
+
+[ext_resource type="Script" uid="uid://bekq1g5wkhxv7" path="res://Scripts/player.gd" id="1_iukft"]
+[ext_resource type="Script" uid="uid://7bxupsej66os" path="res://Scripts/game.gd" id="1_j5yw3"]
+[ext_resource type="Texture2D" uid="uid://x0rgjqdf7gwx" path="res://Assets/Background/Game Background.png" id="2_7lihs"]
+[ext_resource type="Texture2D" uid="uid://dpwicfeiiol1b" path="res://Assets/Background/HealthBoard.png" id="3_b2bpf"]
+[ext_resource type="Texture2D" uid="uid://yicprwmgfgvp" path="res://Assets/Background/ScoreBoard.png" id="4_7lihs"]
+[ext_resource type="Texture2D" uid="uid://5ya0nyt0d816" path="res://Assets/Player Car/Player_Car.png" id="4_fgofq"]
+[ext_resource type="Texture2D" uid="uid://hm8ymofib5q6" path="res://Assets/Hearts/Heart.png" id="6_7lihs"]
+[ext_resource type="AudioStream" uid="uid://cglejfgg0cwp0" path="res://Assets/Audio/Game.mp3" id="8_2irst"]
+[ext_resource type="Texture2D" uid="uid://crprbcfe74dm8" path="res://Assets/Background/Level 1.png" id="9_bf53h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(40, 85)
+
+[node name="Game" type="Node2D" unique_id=575805634]
+script = ExtResource("1_j5yw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1280475213]
+position = Vector2(606.9699, 363.49997)
+scale = Vector2(0.75498766, 0.7471736)
+texture = ExtResource("2_7lihs")
+
+[node name="Player" type="Area2D" parent="." unique_id=81508268]
+position = Vector2(509, 612)
+script = ExtResource("1_iukft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=643686133]
+position = Vector2(32, 23.5)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1518548071]
+position = Vector2(32.099976, 24)
+scale = Vector2(0.19606988, 0.18715577)
+texture = ExtResource("4_fgofq")
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1454815818]
+autostart = true
+
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=188309106]
+
+[node name="ScoreBoard" type="Sprite2D" parent="." unique_id=1116106124]
+position = Vector2(191.84998, 224.99998)
+scale = Vector2(0.7299126, 0.743)
+texture = ExtResource("4_7lihs")
+
+[node name="Score" type="Label" parent="." unique_id=1373023564]
+offset_left = 227.0
+offset_top = 78.0
+offset_right = 316.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 18
+
+[node name="Health" type="Sprite2D" parent="." unique_id=1932466015]
+position = Vector2(1052.9996, 111.5)
+scale = Vector2(0.3650738, 0.3565684)
+texture = ExtResource("3_b2bpf")
+
+[node name="Hearts" type="HBoxContainer" parent="." unique_id=1529281975]
+offset_left = 956.0
+offset_top = 74.0
+offset_right = 2899.0
+offset_bottom = 483.99982
+scale = Vector2(0.1, 0.1)
+
+[node name="Heart_1" type="TextureRect" parent="Hearts" unique_id=111571272]
+layout_mode = 2
+texture = ExtResource("6_7lihs")
+stretch_mode = 2
+
+[node name="Heart_3" type="TextureRect" parent="Hearts" unique_id=985986021]
+layout_mode = 2
+texture = ExtResource("6_7lihs")
+
+[node name="Heart_2" type="TextureRect" parent="Hearts" unique_id=1761502441]
+layout_mode = 2
+texture = ExtResource("6_7lihs")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2008984782]
+stream = ExtResource("8_2irst")
+volume_db = -7.615
+autoplay = true
+parameters/looping = true
+
+[node name="LevelBoard" type="TextureRect" parent="." unique_id=2111386406]
+offset_left = -28.0
+offset_top = 123.0
+offset_right = 329.0
+offset_bottom = 243.0
+texture = ExtResource("9_bf53h")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

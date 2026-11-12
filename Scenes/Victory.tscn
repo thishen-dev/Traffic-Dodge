@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bo5gypk735q2g"]
+
+[ext_resource type="Script" uid="uid://d00lcyvfhbq5v" path="res://Scripts/Victory.gd" id="1_13fhg"]
+[ext_resource type="Texture2D" uid="uid://cn8yxgmxni7ij" path="res://Assets/Background/Wining Background.png" id="2_f6307"]
+[ext_resource type="AudioStream" uid="uid://cxphahsoskima" path="res://Assets/Audio/Click.wav" id="3_ebubv"]
+[ext_resource type="AudioStream" uid="uid://dlbcqls4qebs4" path="res://Assets/Audio/Winning.MP3" id="4_f6307"]
+
+[node name="Victory" type="Node2D" unique_id=1657037439]
+script = ExtResource("1_13fhg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35339281]
+position = Vector2(600.75, 360.875)
+scale = Vector2(0.7191986, 0.76753455)
+texture = ExtResource("2_f6307")
+
+[node name="Play Again" type="Button" parent="." unique_id=1383111616]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0)
+offset_left = 469.0
+offset_top = 525.0
+offset_right = 733.0
+offset_bottom = 591.0
+theme_override_font_sizes/font_size = 38
+
+[node name="Main Menu" type="Button" parent="." unique_id=878976856]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0)
+offset_left = 500.0
+offset_top = 619.0
+offset_right = 701.0
+offset_bottom = 671.0
+theme_override_font_sizes/font_size = 38
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="." unique_id=1462743246]
+stream = ExtResource("3_ebubv")
+volume_db = -20.0
+max_distance = 1200.0
+
+[node name="Winning" type="AudioStreamPlayer2D" parent="." unique_id=390260429]
+stream = ExtResource("4_f6307")
+volume_db = -11.615
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="finished" from="ButtonClick" to="." method="_on_button_click_finished"]

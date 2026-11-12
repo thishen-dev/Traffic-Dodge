@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bsgr1q5wo4b1n"]
+
+[ext_resource type="Script" uid="uid://cpesjde8g8ud0" path="res://Scripts/enemy_cars.gd" id="1_crhtt"]
+[ext_resource type="Texture2D" uid="uid://df1cw50ikkt5f" path="res://Assets/Enemy_Cars/Enemy_1.png" id="2_crhtt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(41, 89)
+
+[node name="EnemyCars" type="Area2D" unique_id=1097860753]
+script = ExtResource("1_crhtt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=231561788]
+position = Vector2(94, 49)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1315033387]
+position = Vector2(94.10811, 49.624214)
+scale = Vector2(0.21027036, 0.22445077)
+texture = ExtResource("2_crhtt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

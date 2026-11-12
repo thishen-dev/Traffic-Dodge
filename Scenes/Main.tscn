@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://di75g70ayah4o"]
+
+[ext_resource type="Script" uid="uid://btxgdxa5wavd8" path="res://Scripts/main.gd" id="1_r150o"]
+[ext_resource type="Texture2D" uid="uid://bsyfdlx4og655" path="res://Assets/Background/Menu Background.png" id="2_rgh2o"]
+[ext_resource type="AudioStream" uid="uid://h040ioygpb83" path="res://Assets/Audio/Main Menu.mp3" id="3_kln2b"]
+[ext_resource type="AudioStream" uid="uid://cxphahsoskima" path="res://Assets/Audio/Click.wav" id="4_rgh2o"]
+
+[node name="Main" type="Node2D" unique_id=43110851]
+script = ExtResource("1_r150o")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1186153651]
+position = Vector2(599.9353, 359.76892)
+scale = Vector2(0.7177807, 0.76563454)
+texture = ExtResource("2_rgh2o")
+
+[node name="P_Button" type="Button" parent="." unique_id=2041549799]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0)
+offset_left = 456.0
+offset_top = 421.0
+offset_right = 735.0
+offset_bottom = 484.0
+theme_override_colors/icon_disabled_color = Color(4.217, 4.217, 4.217, 0)
+theme_override_font_sizes/font_size = 38
+
+[node name="Q_Button" type="Button" parent="." unique_id=2056187930]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0)
+offset_left = 458.0
+offset_top = 601.0
+offset_right = 732.0
+offset_bottom = 660.0
+theme_override_colors/icon_disabled_color = Color(4.217, 4.217, 4.217, 0)
+theme_override_font_sizes/font_size = 38
+
+[node name="Instruction" type="Button" parent="." unique_id=1028701453]
+modulate = Color(0.011764706, 0.011764706, 0.011764706, 0)
+offset_left = 458.0
+offset_top = 507.0
+offset_right = 731.0
+offset_bottom = 573.0
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="." unique_id=1521042856]
+stream = ExtResource("3_kln2b")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="." unique_id=1219468047]
+stream = ExtResource("4_rgh2o")
+volume_db = -20.0
+max_distance = 1200.0
+
+[connection signal="pressed" from="P_Button" to="." method="_on_p_button_pressed"]
+[connection signal="pressed" from="Q_Button" to="." method="_on_q_button_pressed"]
+[connection signal="pressed" from="Instruction" to="." method="_on_instruction_pressed"]
+[connection signal="ready" from="ButtonClick" to="." method="_on_button_click_ready"]

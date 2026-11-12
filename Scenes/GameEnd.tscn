@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cjcs4qui2mfb5"]
+
+[ext_resource type="Script" uid="uid://cymholduiicy7" path="res://Scripts/gameEnd.gd" id="1_6cj8v"]
+[ext_resource type="Texture2D" uid="uid://cgv5fscrkmxmq" path="res://Assets/Background/End Background.jpg" id="2_qtfpu"]
+[ext_resource type="AudioStream" uid="uid://cpqeelw42hqop" path="res://Assets/Audio/End.mp3" id="3_l7vql"]
+[ext_resource type="AudioStream" uid="uid://cxphahsoskima" path="res://Assets/Audio/Click.wav" id="4_f25do"]
+
+[node name="GameEnd" type="Node2D" unique_id=1919606080]
+script = ExtResource("1_6cj8v")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1098667942]
+position = Vector2(600, 360.49997)
+scale = Vector2(0.89955026, 0.90124995)
+texture = ExtResource("2_qtfpu")
+
+[node name="FinalScore" type="Label" parent="." unique_id=1256732319]
+offset_left = 454.0
+offset_top = 344.0
+offset_right = 755.0
+offset_bottom = 399.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
+[node name="Play Again" type="Button" parent="." unique_id=1328356822]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0)
+offset_left = 452.0
+offset_top = 460.0
+offset_right = 742.0
+offset_bottom = 554.0
+theme_override_font_sizes/font_size = 38
+
+[node name="Main Menu" type="Button" parent="." unique_id=1495582105]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0)
+offset_left = 482.0
+offset_top = 575.0
+offset_right = 713.0
+offset_bottom = 636.0
+theme_override_font_sizes/font_size = 38
+
+[node name="End Music" type="AudioStreamPlayer2D" parent="." unique_id=97989891]
+stream = ExtResource("3_l7vql")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="." unique_id=1124578100]
+stream = ExtResource("4_f25do")
+volume_db = -20.0
+max_distance = 1200.0
+
+[connection signal="pressed" from="Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Main Menu" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
